@@ -1,0 +1,21 @@
+Jeremy Panasuk
+Sand Creek, WI  ·  715-970-0204  ·  jpanasuk@gmail.com
+github.com/jpanasuk-netizen  ·  huggingface.co/jpanasuk  ·  linkedin.com/in/jeremy-p-34203322/
+
+Hiring team — Cresta
+Role: AI Deployment Manager (United States / Remote)
+
+You wrote the only honest sentence in this category: shipping AI is half the story. Deploying it successfully is where the real impact happens. That is the only work I have done for twenty years.
+
+Cresta turns every conversation into a competitive advantage — conversational agents, real-time human augmentation, conversation intelligence — for United, Cox, Marriott. I have not worn your badge. I have already owned the moment your posting describes: ambitious software, a live enterprise that was not ready for it, humans who have to use it on Tuesday, metrics the customer signed, a team that can scale after I leave.
+
+Informatica used me as the parachute closer. 19 of 20 crisis accounts recovered. Dawn Foods warehouse loads 8 hours to under 1 — featured because it got used. Mercedes +200% on the longest workflows; TCS kept the playbook. West Bend live agent quote path cut in half. Navy Federal from architecture through go-live training. PepsiCo v9→v10 with zero data loss. Last 24 months I ran that same loop on a private RTX 4070: measured agents, bounded MCP, published stack. Models accelerate. Adoption still decides whether they land.
+
+Your success lines are my operating path. Launch so it gets used. Hit the date and the metric. Leave them confident. Give product, engineering, and GTM a written plan. Turn complexity into forward progress. The artifacts are public: environment summaries, upgrade roadmaps, the Dawn Foods loyalty talk. Customer satisfaction is worthless. Customer loyalty is priceless. That is not a slogan. That is the talk I gave while still embedded on the floor — and it is the product Cresta sells.
+
+Remote United States. Available. High-autonomy teams only. If you want the person who owns the deploy, I am ready.
+
+Live packet: https://jpanasuk-netizen.github.io/for-cresta/
+Hugging Face: https://huggingface.co/spaces/jpanasuk/for-cresta
+
+Jeremy Panasuk

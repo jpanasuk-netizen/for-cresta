@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jeremy Panasuk · Cresta AI Deployment Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: letter; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { background: #fff; }
+    .sheet { width: 8.5in; height: 11in; overflow: hidden; page-break-after: always; position: relative; background: #070b16; color: #eef3ff; font-family: "Manrope", Arial, sans-serif; }
+    .pad { padding: 0.28in 0.38in 0.32in; }
+    .kicker { font-family: "IBM Plex Mono", monospace; font-size: 7.2pt; letter-spacing: 0.2em; text-transform: uppercase; color: #5ee1ff; }
+    h1 { font-family: "Syne", sans-serif; font-size: 24pt; line-height: 0.95; margin: 4px 0 4px; }
+    .tag { font-size: 10pt; font-style: italic; color: #c5d0e8; line-height: 1.25; margin: 5px 0 6px; max-width: 52ch; }
+    .tag em { color: #5ee1ff; }
+    .contact { font-size: 7.5pt; color: #8b96b0; line-height: 1.4; }
+    .contact a { color: #5ee1ff; text-decoration: none; }
+    .hero { display: grid; grid-template-columns: 1fr 1.08in; gap: 12px; }
+    .shot { width: 1.08in; height: 1.36in; object-fit: cover; object-position: 50% 12%; border: 1px solid #5ee1ff; }
+    .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin: 8px 0 7px; }
+    .m { border: 1px solid rgba(94,225,255,0.2); background: #0e1528; padding: 6px 5px 5px; text-align: center; }
+    .m b { display: block; font-size: 13pt; color: #5ee1ff; line-height: 0.95; font-family: "Syne", sans-serif; }
+    .m span { display: block; font-size: 5.6pt; letter-spacing: 0.06em; text-transform: uppercase; color: #8b96b0; margin-top: 3px; font-weight: 600; }
+    h2 { font-family: "IBM Plex Mono", monospace; font-size: 7.1pt; letter-spacing: 0.16em; text-transform: uppercase; color: #5ee1ff; margin: 7px 0 4px; font-weight: 500; border-bottom: 1px solid rgba(94,225,255,0.18); padding-bottom: 3px; }
+    p { font-size: 7.8pt; line-height: 1.32; color: #c5d0e8; }
+    .who { font-size: 8.1pt; color: #e8eef8; }
+    .layers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .layer { border: 1px solid rgba(94,225,255,0.18); background: #0e1528; padding: 7px 8px; }
+    .layer h3 { font-size: 9.3pt; margin-bottom: 3px; font-family: "Syne", sans-serif; }
+    .layer p { font-size: 7.2pt; }
+    .labg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .card { border: 1px solid rgba(94,225,255,0.18); background: #0e1528; padding: 7px 8px; }
+    .card h3 { font-size: 8.3pt; }
+    .card .n { color: #5ee1ff; }
+    .jobhead { display: flex; justify-content: space-between; gap: 8px; font-size: 8.3pt; font-weight: 700; color: #eef3ff; }
+    .jobhead .d { color: #5ee1ff; white-space: nowrap; font-size: 7.4pt; font-family: "IBM Plex Mono", monospace; font-weight: 500; }
+    .reel { display: grid; grid-template-columns: 0.80in 1fr 0.80in 1fr; gap: 3px 7px; font-size: 7.4pt; line-height: 1.28; color: #c5d0e8; }
+    .reel .n { font-size: 10pt; color: #5ee1ff; font-weight: 600; font-family: "Syne", sans-serif; }
+    .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 7px; }
+    .q { font-size: 7.2pt; font-style: italic; line-height: 1.28; padding: 7px 8px; border: 1px solid rgba(94,225,255,0.18); border-left: 3px solid #5ee1ff; background: #0e1528; }
+    .q span { display: block; font-style: normal; font-size: 6.1pt; letter-spacing: 0.1em; text-transform: uppercase; color: #5ee1ff; margin-top: 3px; font-weight: 700; }
+    .success { margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .ok { border: 1px solid rgba(94,225,255,0.18); background: #0e1528; padding: 7px 8px; }
+    .ok h3 { font-size: 7.8pt; color: #5ee1ff; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .ok p { font-size: 7.2pt; }
+    .strike { margin-top: 7px; background: linear-gradient(90deg,#3d7cff,#2ad2ff); color: #070b16; padding: 8px 10px; font-size: 8.3pt; font-weight: 600; line-height: 1.3; }
+    .gold { margin-top: 7px; border: 1px solid rgba(61,124,255,0.45); padding: 7px 9px; }
+    .gold .t { font-size: 6.8pt; letter-spacing: 0.12em; text-transform: uppercase; color: #5ee1ff; font-weight: 700; }
+    .skills { font-size: 7.2pt; line-height: 1.36; }
+    .skills strong { color: #5ee1ff; }
+    .foot { position: absolute; left: 0.38in; right: 0.38in; bottom: 0.14in; font-size: 6.7pt; letter-spacing: 0.1em; color: #6a7388; text-align: center; font-family: "IBM Plex Mono", monospace; }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="pad">
+      <div class="hero">
+        <div>
+          <div class="kicker">AI Deployment Manager · Cresta · United States · Remote</div>
+          <h1>Jeremy Panasuk</h1>
+          <p class="tag">Shipping AI is half the story. <em>Deploying it so it gets used</em> is the only work I have done for twenty years.</p>
+          <div class="contact">
+            Sand Creek, WI · 715-970-0204 · jpanasuk@gmail.com<br />
+            Packet: jpanasuk-netizen.github.io/for-cresta · github.com/jpanasuk-netizen · huggingface.co/jpanasuk<br />
+            linkedin.com/in/jeremy-p-34203322
+          </div>
+        </div>
+        <img class="shot" src="assets/portrait.jpg" alt="Jeremy Panasuk" />
+      </div>
+      <div class="metrics">
+        <div class="m"><b>19/20</b><span>Crisis accounts recovered</span></div>
+        <div class="m"><b>8h→1h</b><span>Dawn · got used · featured</span></div>
+        <div class="m"><b>−50%</b><span>West Bend live quote path</span></div>
+        <div class="m"><b>+200%</b><span>Mercedes · playbook stayed</span></div>
+        <div class="m"><b>~27×</b><span>Local AI decode after routing</span></div>
+      </div>
+      <p class="who">Cresta AI Deployment Managers own the moment cutting-edge AI becomes live, adopted, measured. That is Informatica IPS/SEAL: embed in the customer environment, hit the date and the metric, leave a team that can scale. Last 24 months: private RTX 4070 lab, measured agents, bounded MCP. Remote US. Available.</p>
+
+      <h2>01 — Your success lines · my receipts</h2>
+      <div class="success">
+        <div class="ok"><h3>Gets used</h3><p>19/20 recovered. Dawn featured because the load actually moved. If humans do not run it Tuesday, it did not launch.</p></div>
+        <div class="ok"><h3>On time / metrics</h3><p>PepsiCo v9→v10 zero data loss. Micron zero downtime. Navy Federal architecture through go-live.</p></div>
+        <div class="ok"><h3>Ready to scale</h3><p>Named skill-up. TCS kept Mercedes docs. QA twin of production. Hypercare is default.</p></div>
+      </div>
+
+      <h2>02 — Deploy motion</h2>
+      <div class="layers">
+        <div class="layer"><h3>Embed</h3><p>Parachute closer. Live CX-adjacent and ops floors: West Bend quotes, Navy Federal, insurance, CPG, fab. I sit with the people who have to use it.</p></div>
+        <div class="layer"><h3>Write the path</h3><p>Environment Summary. Upgrade Roadmap. Phase review. Six-class test. Internal teams get a plan, not a Slack thread. Public playbook on the packet.</p></div>
+        <div class="layer"><h3>Leave the team</h3><p>Coaching is a deliverable. Clients asked for me by name. Loyalty talk given on Dawn’s floor — the product Cresta sells.</p></div>
+      </div>
+
+      <h2>03 — Independent lab · Aug 2024 – Present</h2>
+      <div class="labg">
+        <div class="card"><h3><span class="n">4070</span> Tabby Tavern Stack</h3><p>Private LLM on RTX 4070 / WSL2: TabbyAPI EXL3, Ollama, Open WebUI, CUDA. huggingface.co/jpanasuk/tabby-tavern-stack</p></div>
+        <div class="card"><h3><span class="n">27×</span> Local Grid Suite</h3><p>Discover, bench, GPU routing, SQLite, CLI + PDF. 1.39 → 37.47 tok/s. Same loop as a customer deploy: measure before claiming.</p></div>
+        <div class="card"><h3><span class="n">MCP</span> Dockroot-MCP</h3><p>Agents see Docker/network. They do not get host-root. Hand the agent the boundary, not the box.</p></div>
+        <div class="card"><h3><span class="n">Agents</span> OpenClaw + pipeline</h3><p>Systems → architect → validator. Production WhatsApp agents, 10+ skills. Multi-provider routing with failover.</p></div>
+      </div>
+      <p style="margin-top:6px;">Also retained through 2025 for Informatica production rescue: Grid/HA, PowerExchange CDC, IDQ, v9/v10, SOAP/REST, install-to-go-live, hypercare.</p>
+      <div class="strike">Cresta: shipping AI is half the story. I own the other half — live, adopted, measured, ready to scale. I am not applying to learn deployment. You named my job.</div>
+    </div>
+    <div class="foot">Jeremy Panasuk · Cresta · AI Deployment Manager · 1 / 2</div>
+  </div>
+
+  <div class="sheet">
+    <div class="pad">
+      <div class="kicker">Jeremy Panasuk · 715-970-0204 · jpanasuk@gmail.com · jpanasuk-netizen.github.io/for-cresta</div>
+
+      <h2>04 — Sr. Software Developer, Talend · MOBE</h2>
+      <div class="jobhead"><div>Minneapolis · production data integration</div><div class="d">Jul 2023 – Aug 2024</div></div>
+      <p>Talend 8 on a live platform. GitLab CI/CD. Redshift + SQL Server. 99.99% stability. On-call incident command.</p>
+
+      <h2>05 — Informatica Specialist · Tata Consultancy Services</h2>
+      <div class="jobhead"><div>PepsiCo · Ameriprise · Ace Hardware</div><div class="d">Mar 2020 – Dec 2021</div></div>
+      <p><b>PepsiCo</b> Grid/HA + DIH across NA/LATAM. v9→v10 zero data loss. <b>Ameriprise</b> IDQ / EDC / Axon. <b>Ace Hardware</b> PowerCenter → Big Data with business + QA.</p>
+
+      <h2>06 — Consulting Manager / SEAL · Informatica · Jun 2008 – Oct 2019</h2>
+      <p style="margin-bottom:6px;">Analyst → Consulting Manager. Teams of 7–14. v7–v10. Consultant of the Year runner-up (2016). Parachute closer: 20 in, 19 recovered. This is AI deployment with a different logo on the badge.</p>
+      <div class="reel">
+        <div class="n">8h→1h</div><div><b>Dawn Foods</b> — manufacturing CDC. Featured because it got used.</div>
+        <div class="n">−50%</div><div><b>West Bend Mutual</b> — live SOAP/XML quote path. Agent turnaround.</div>
+        <div class="n">+200%</div><div><b>Mercedes-Benz</b> — longest workflows. Playbook adopted by TCS.</div>
+        <div class="n">7,000h</div><div><b>Micron</b> — fab EDW. $3M extensions. Zero downtime.</div>
+        <div class="n">$800k</div><div><b>Toyota</b> — Engine Management go-live. All consultants 5/5.</div>
+        <div class="n">20+ nodes</div><div><b>MF Global</b> — world-first Grid/HA + DR. Four regions.</div>
+        <div class="n">$2.3M+</div><div><b>BNY Mellon</b> — Grid/HA with senior VPs and CEO.</div>
+        <div class="n">$10M+</div><div><b>JPMorgan Chase</b> — DW / CoE roadmaps. ELA + PS.</div>
+        <div class="n">3,000h</div><div><b>Navy Federal</b> — architecture through go-live training.</div>
+        <div class="n">Phase 2</div><div><b>Farmers</b> — Guidewire XML. Skill-up named in the review.</div>
+        <div class="n">P1</div><div><b>Northwestern Mutual</b> — domain best practice. QA twin of prod.</div>
+        <div class="n">v9→v10</div><div><b>Waddell &amp; Reed</b> — measured I/O. Upgrade types + tests.</div>
+      </div>
+
+      <div style="margin-top:8px;">
+        <div class="jobhead"><div>Sr. Integration Engineer · Prime Therapeutics</div><div class="d">Jan 2007 – Jun 2008</div></div>
+        <p>Medicare + MTM data marts. Delivered above grade-level.</p>
+      </div>
+      <div style="margin-top:5px;">
+        <div class="jobhead"><div>Business Analyst, Oils Plants · Integration Associate · Cargill</div><div class="d">Dec 2004 – Jan 2007</div></div>
+        <p>Plant ERP on live operations. Demantra: Quarterly Award for Excellence, Oct 2006. Horizon Milling: CFO Award 2005 (six / year).</p>
+      </div>
+
+      <div class="quotes">
+        <div class="q">“His knowledge not only of the Informatica suite but also at the operating system level has been truly invaluable.”<span>Dawn Foods · client</span></div>
+        <div class="q">“He’s a rock star out at Dawn. The customer loves him and the sales team has been leaning on him hard.”<span>Informatica IPS · sales</span></div>
+        <div class="q">“You have sent one of the best that Informatica has to offer in Jeremy.”<span>MF Global · infrastructure</span></div>
+        <div class="q">“I trusted that Jeremy would deliver, with quality… exceeded the expectations at someone of his grade level.”<span>Prime Therapeutics</span></div>
+      </div>
+
+      <div class="gold">
+        <div class="t">Unstructured instincts · Secret Key / Fireworks Forever · 1996–2004</div>
+        <p>Class B shooter. $800K+ seasonal inventory. No schema, no second take. Customer loyalty is priceless — the talk I later gave at Informatica, on Dawn’s floor. Cresta sells that outcome.</p>
+      </div>
+
+      <h2>07 — Stack · this posting</h2>
+      <p class="skills"><strong>Deploy</strong> · customer-facing implementations · SOW / roadmap / hypercare · written operating paths · team enablement<br />
+      <strong>Code / data</strong> · Python · SQL · Docker · Linux/WSL2 · GitLab CI/CD · APIs · Informatica PowerCenter · Grid/HA · PowerExchange CDC · Talend 8 · IDQ · Oracle · SQL Server · DB2<br />
+      <strong>AI</strong> · local LLM lab · TabbyAPI EXL3 · Ollama · MCP · RAG · OpenClaw agents · SQLite telemetry<br />
+      <strong>This posting</strong> · U.S. remote · BBA MIS, UW–Eau Claire · Informatica Certified Specialist (Admin, Big Data Admin, PowerCenter Developer I &amp; II)</p>
+    </div>
+    <div class="foot">Jeremy Panasuk · Cresta · AI Deployment Manager · 2 / 2</div>
+  </div>
+</body>
+</html>

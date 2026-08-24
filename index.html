@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeremy Panasuk · AI Deployment Manager · Cresta</title>
+  <meta name="description" content="Cresta AI Deployment Manager packet. Shipping AI is half the story. Deploying it so it gets used is the only work Jeremy has done for twenty years." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b16;
+      --dim: #0e1528;
+      --ink: #eef3ff;
+      --muted: #8b96b0;
+      --line: rgba(94, 225, 255, 0.18);
+      --blue: #3d7cff;
+      --cyan: #5ee1ff;
+      --paper: #f4f7ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 17px; line-height: 1.55; }
+    a { color: var(--cyan); }
+    a:hover { color: #fff; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+    .kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); }
+    h1, h2 { font-family: "Syne", sans-serif; font-weight: 700; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(40px, 6.6vw, 76px); line-height: 0.92; }
+    h1 em { font-style: italic; font-weight: 600; color: var(--cyan); }
+    h2 { font-size: clamp(26px, 3.6vw, 42px); line-height: 1.08; margin: 8px 0 16px; }
+    h2 em { color: var(--cyan); font-style: italic; font-weight: 600; }
+    header.nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(7, 11, 22, 0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    header.nav .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 16px; }
+    .brand { color: var(--ink); text-decoration: none; font-family: "Syne", sans-serif; font-weight: 700; letter-spacing: 0.04em; }
+    .brand span { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-left: 10px; font-weight: 400; }
+    header.nav nav { display: flex; gap: 16px; flex-wrap: wrap; }
+    header.nav nav a { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    header.nav nav a:hover { color: var(--ink); }
+    .btn {
+      display: inline-flex; align-items: center;
+      background: linear-gradient(90deg, var(--blue), #2ad2ff);
+      color: #070b16; text-decoration: none;
+      padding: 12px 18px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+      font-family: "IBM Plex Mono", monospace; font-weight: 500; border: 0;
+    }
+    .btn:hover { filter: brightness(1.08); color: #070b16; }
+    .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--cyan); }
+    .btn.ghost:hover { background: var(--cyan); color: #070b16; }
+    .hero { padding: 56px 0 32px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: end; }
+    .lede { font-size: clamp(18px, 2.2vw, 24px); line-height: 1.35; max-width: 38ch; margin: 18px 0 16px; }
+    .meta { color: var(--muted); max-width: 50ch; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .portrait { border: 1px solid var(--line); position: relative; }
+    .portrait img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 50% 14%; filter: contrast(1.06) saturate(0.92); }
+    .portrait figcaption { padding: 12px 14px; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .wave { width: 100%; height: 240px; object-fit: cover; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); filter: grayscale(0.35) contrast(1.15) saturate(0.6); }
+    section { padding: 72px 0; }
+    .num { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.2em; color: var(--cyan); }
+    .split { display: grid; grid-template-columns: 0.38fr 0.62fr; gap: 40px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .cell { background: var(--bg); padding: 26px; }
+    .cell h3 { font-size: 20px; margin-bottom: 8px; font-family: "Syne", sans-serif; }
+    .cell p { color: #c5d0e8; font-size: 15px; }
+    .success { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 28px; }
+    .ok { border: 1px solid var(--line); background: var(--dim); padding: 18px 16px; min-height: 180px; }
+    .ok .n { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); }
+    .ok h3 { font-family: "Syne", sans-serif; font-size: 16px; margin: 8px 0 8px; }
+    .ok p { font-size: 13.5px; color: #c5d0e8; }
+    details.item { background: var(--dim); border: 1px solid var(--line); margin-bottom: 8px; }
+    details.item summary { cursor: pointer; list-style: none; padding: 16px 18px; display: grid; grid-template-columns: 96px 1fr auto; gap: 12px; align-items: start; }
+    details.item summary::-webkit-details-marker { display: none; }
+    .tag { font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); border: 1px solid rgba(94,225,255,0.28); padding: 4px 7px; height: fit-content; }
+    .proof { padding: 0 18px 18px 126px; color: #c5d0e8; font-size: 15px; }
+    .tickets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .ticket { border: 1px solid var(--line); padding: 20px; background: var(--dim); }
+    .ticket b { display: block; font-family: "Syne", sans-serif; font-size: 28px; color: var(--cyan); line-height: 1; margin: 6px 0 8px; }
+    .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .qcard { border: 1px solid var(--line); padding: 22px; background: var(--dim); }
+    .qcard p { font-style: italic; font-size: 18px; line-height: 1.35; }
+    .qcard .src { margin-top: 12px; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); }
+    .letter { background: var(--dim); border: 1px solid var(--line); padding: 32px; max-width: 72ch; }
+    .letter p { margin: 0 0 14px; color: #c5d0e8; }
+    footer { border-top: 1px solid var(--line); padding: 22px 0 80px; color: var(--muted); font-size: 14px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .applybar {
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 30;
+      display: flex; gap: 10px; align-items: center;
+      background: #0b1224; color: var(--ink); border: 1px solid var(--line);
+      padding: 10px 10px 10px 18px; font-family: "IBM Plex Mono", monospace;
+      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .applybar .btn { padding: 8px 14px; }
+    @media (max-width: 880px) {
+      .hero, .split, .grid2, .success, .tickets, .quotes { grid-template-columns: 1fr; }
+      header.nav nav { display: none; }
+      details.item summary { grid-template-columns: 1fr auto; }
+      .tag { display: none; }
+      .proof { padding: 0 18px 18px; }
+      .applybar { width: calc(100% - 24px); justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top">Jeremy Panasuk <span>for Cresta</span></a>
+      <nav>
+        <a href="#role">The role</a>
+        <a href="#success">Success</a>
+        <a href="#jd">The brief</a>
+        <a href="playbook.html">Playbook</a>
+        <a href="loyalty.html">Loyalty</a>
+        <a href="#letter">Letter</a>
+      </nav>
+      <a class="btn" href="https://job-boards.greenhouse.io/cresta/jobs/5078921008" target="_blank" rel="noopener">Apply</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <p class="kicker">AI Deployment Manager · United States · Remote</p>
+        <h1>Shipping AI is half the story. <em>Deploying it</em> is the job.</h1>
+        <p class="lede">You wrote that line. I have been that person for twenty years — live customer environments, unprepared data, systems that have to get used after I leave.</p>
+        <p class="meta">Cresta turns every conversation into a competitive advantage. United, Cox, Marriott. I turn ambitious platforms into live, adopted, measured outcomes. Contact-center AI is a new logo on work I already own: embed, launch, coach, scale.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#jd">Open the brief</a>
+          <a class="btn ghost" href="JEREMY_PANASUK_CRESTA_COVER.pdf">Cover letter</a>
+          <a class="btn ghost" href="JEREMY_PANASUK_CRESTA_ADM.pdf">Resume PDF</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="assets/portrait.jpg" alt="Jeremy Panasuk" />
+        <figcaption>Jeremy Panasuk · Sand Creek, WI · the closer they send in alone</figcaption>
+      </figure>
+    </div>
+    <img class="wave" src="assets/wave.jpg" alt="" />
+
+    <section id="role">
+      <div class="wrap split">
+        <div>
+          <p class="num">01 — About the role</p>
+          <h2>Own the moment cutting-edge AI becomes <em>real-world results</em>.</h2>
+        </div>
+        <div class="grid2">
+          <article class="cell">
+            <h3>End-to-end customer deployments</h3>
+            <p>Navy Federal: architecture through go-live. Harvard: v9 through hypercare. Micron: 2,080h → 7,000h, zero downtime. I do not throw a model over a wall. I sit in the room until it runs.</p>
+          </article>
+          <article class="cell">
+            <h3>Adopted, not installed</h3>
+            <p>Mercedes +200% — TCS kept the path. Dawn featured on informatica.com because the warehouse load actually moved 8h → 1h. If the agent does not use it on Tuesday, it did not launch.</p>
+          </article>
+          <article class="cell">
+            <h3>Clarity inside complexity</h3>
+            <p>BNY Grid/HA with senior VPs and CEO Sohaib Abbasi. Kohl’s through S-VPs. Environment summaries, upgrade roadmaps, phase reviews. Internal teams get a written operating path, not a Slack thread.</p>
+          </article>
+          <article class="cell">
+            <h3>Ready to scale</h3>
+            <p>Named skill-up. Walked loads. QA twin of production. Playbooks so the next site is cheaper. Cresta’s hypercare is my default, not a phase I skip.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="success" style="background:#0b1224;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <div class="wrap">
+        <p class="num">02 — What success looks like. Evidence, not adjectives.</p>
+        <h2>Your five lines. My receipts.</h2>
+        <div class="success">
+          <article class="ok">
+            <div class="n">01 · Used</div>
+            <h3>AI that actually gets used</h3>
+            <p>19 of 20 crisis accounts recovered. West Bend quote path −50%. If humans do not run it, I did not finish.</p>
+          </article>
+          <article class="ok">
+            <div class="n">02 · On time</div>
+            <h3>Smooth. On time. Against metrics.</h3>
+            <p>PepsiCo v9→v10, zero data loss. Micron zero downtime. Dawn 8h→1h. Numbers the customer signed, not a vibe.</p>
+          </article>
+          <article class="ok">
+            <div class="n">03 · Confident</div>
+            <h3>Leave them ready to scale</h3>
+            <p>Coaching named in the deliverable. Farmers skill-up. Navy Federal go-live tests. The team can run the next wave without me in the chair.</p>
+          </article>
+          <article class="ok">
+            <div class="n">04 · Clarity</div>
+            <h3>Product, eng, GTM can lean on you</h3>
+            <p>SOWs, CoE evals, $10M+ influenced. I bring the pattern back so engineering does not guess what the floor needs.</p>
+          </article>
+          <article class="ok">
+            <div class="n">05 · Momentum</div>
+            <h3>Complexity into forward progress</h3>
+            <p>Milwaukee insurer: three months dark, closed in two days — one buried DB2 driver. Read the evidence. Then move.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="jd">
+      <div class="wrap">
+        <p class="num">03 — Qualifications you value</p>
+        <h2>Every line in the posting. <em>Answered.</em></h2>
+        <div class="jd">
+          <details class="item" open>
+            <summary>
+              <span class="tag">Implement</span>
+              <h3>Technical / AI-driven SaaS implementations</h3>
+              <span>+</span>
+            </summary>
+            <div class="proof">Informatica IPS / SEAL was the consultative implementation model: embed, launch, playbook, repeat. Last 24 months the same motion on a published local AI stack (TabbyAPI, Ollama, bounded MCP, production agents). I have not faked a Cresta badge. I have already done the job Cresta is hiring: make advanced software live in an enterprise that was not ready for it.</div>
+          </details>
+          <details class="item">
+            <summary>
+              <span class="tag">PM + consult</span>
+              <h3>Project management with a customer-first mindset</h3>
+              <span>+</span>
+            </summary>
+            <div class="proof">Consulting Manager. Teams of 7–14. 3,000-hour Navy Federal V1. 7,000-hour Micron. Clients asked for me by name. “Rock star.” “One of the best Informatica has to offer.” Loyalty is the metric, not a CSAT survey they forget.</div>
+          </details>
+          <details class="item">
+            <summary>
+              <span class="tag">Data</span>
+              <h3>Comfort with technical concepts, data, and analytics</h3>
+              <span>+</span>
+            </summary>
+            <div class="proof">Grid/HA, PowerExchange CDC, thread statistics, I/O wait, decode tok/s. Conversation intelligence is a new surface on an old habit: measure the bottleneck before you add more agents — human or AI.</div>
+          </details>
+          <details class="item">
+            <summary>
+              <span class="tag">Translate</span>
+              <h3>Complex technology into clear, actionable plans</h3>
+              <span>+</span>
+            </summary>
+            <div class="proof">Environment Summary. Upgrade Roadmap. Phase review. v10 test deck. Farmers, Mercedes-Benz Financial, Northwestern Mutual, Waddell &amp; Reed. Public: <a href="playbook.html">the Cresta deployment playbook</a>. Internal teams get a written path. Customers get a go-live they can defend.</div>
+          </details>
+          <details class="item">
+            <summary>
+              <span class="tag">Own</span>
+              <h3>Bias toward execution, outcomes, ownership</h3>
+              <span>+</span>
+            </summary>
+            <div class="proof">20 troubled accounts entered. 19 recovered. I still parachute. Cresta’s own line: deploying it successfully is where the real impact happens. That is not a personality test. That is the résumé.</div>
+          </details>
+          <details class="item">
+            <summary>
+              <span class="tag">Pace</span>
+              <h3>Thrives in fast-paced, high-growth environments</h3>
+              <span>+</span>
+            </summary>
+            <div class="proof">Informatica SEAL during the Grid/HA years. Stanford-born Cresta, $270M+, Ping Wu’s contact-center AI thesis — I want that velocity pointed at live CX. Remote US. Available. High-autonomy only.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#0b1224;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <div class="wrap">
+        <p class="num">04 — Receipts</p>
+        <div class="tickets" style="margin-top:22px">
+          <article class="ticket"><b>19/20</b><div>Crisis accounts recovered</div></article>
+          <article class="ticket"><b>8h → 1h</b><div>Dawn Foods · featured</div></article>
+          <article class="ticket"><b>−50%</b><div>West Bend · live quote path</div></article>
+          <article class="ticket"><b>+200%</b><div>Mercedes · playbook stayed</div></article>
+          <article class="ticket"><b>zero loss</b><div>PepsiCo v9→v10</div></article>
+          <article class="ticket"><b>~27×</b><div>Local AI decode after routing</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <p class="num">05 — Asked for by name</p>
+        <h2>Customer loyalty is the product after the product.</h2>
+        <p class="meta" style="margin:0 0 22px;max-width:56ch;">Cresta’s site says it: drive customer loyalty. I gave that talk at Informatica while still on Dawn’s floor. <a href="loyalty.html">Read it here</a>.</p>
+        <div class="quotes">
+          <div class="qcard"><p>“His knowledge not only of the Informatica suite but also at the operating system level has been truly invaluable.”</p><div class="src">Dawn Foods · client</div></div>
+          <div class="qcard"><p>“He’s a rock star out at Dawn. The customer loves him and the sales team has been leaning on him hard.”</p><div class="src">Informatica IPS · sales</div></div>
+          <div class="qcard"><p>“You have sent one of the best that Informatica has to offer in Jeremy.”</p><div class="src">MF Global · infrastructure</div></div>
+          <div class="qcard"><p>“I trusted that Jeremy would deliver, with quality… exceeded the expectations at someone of his grade level.”</p><div class="src">Prime Therapeutics</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="letter">
+      <div class="wrap">
+        <p class="num">06 — Letter</p>
+        <h2>To Cresta.</h2>
+        <p style="margin:0 0 16px;display:flex;gap:10px;flex-wrap:wrap;">
+          <a class="btn" href="cover.html">Open cover letter</a>
+          <a class="btn ghost" href="JEREMY_PANASUK_CRESTA_COVER.pdf">Download PDF</a>
+          <button class="btn ghost" type="button" id="copy">Copy text</button>
+        </p>
+        <article class="letter" id="letter-body">
+          <p>Jeremy Panasuk<br>Sand Creek, WI · 715-970-0204 · jpanasuk@gmail.com<br>
+          Packet: https://jpanasuk-netizen.github.io/for-cresta/</p>
+          <p>Hiring team — Cresta<br>AI Deployment Manager · United States · Remote</p>
+          <p>You wrote the only honest sentence in this category: shipping AI is half the story. Deploying it successfully is where the real impact happens. That is the only work I have done for twenty years.</p>
+          <p>Cresta unlocks the customer experience — conversational agents, real-time human augmentation, conversation intelligence — for United, Cox, Marriott. I have not worn your badge. I have already owned the moment your posting describes: ambitious software, live enterprise, humans who have to use it on Tuesday, metrics the customer signed, a team that can scale after I fly out.</p>
+          <p>Informatica used me as the parachute closer. 19 of 20 crisis accounts recovered. Dawn Foods warehouse loads 8 hours to under 1 — featured because it got used. Mercedes +200% on the longest workflows; TCS kept the playbook. West Bend live quote path cut in half. Navy Federal from architecture through go-live training. PepsiCo v9→v10 with zero data loss. Last 24 months I ran that same loop on a private RTX 4070: measured agents, bounded MCP, published stack. Models accelerate. Adoption still decides whether they land.</p>
+          <p>Your success lines are my operating path. Launch so it gets used. Hit the date and the metric. Leave them confident. Give product, eng, and GTM a written plan. Turn complexity into forward progress. The artifacts are public: environment summaries, upgrade roadmaps, the Dawn Foods loyalty talk. Customer satisfaction is worthless. Customer loyalty is priceless. That is not a slogan on my site. That is the talk I gave while still embedded on the floor — and it is the product Cresta sells.</p>
+          <p>Remote US. Available. High-autonomy teams only. If you want the person who owns the deploy, I am ready.</p>
+          <p>Jeremy Panasuk</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>Jeremy Panasuk · Sand Creek, WI · 715-970-0204</div>
+      <div>
+        <a href="playbook.html">Playbook</a> ·
+        <a href="loyalty.html">Loyalty</a> ·
+        <a href="https://github.com/jpanasuk-netizen/for-cresta">GitHub</a> ·
+        <a href="https://huggingface.co/spaces/jpanasuk/for-cresta">Hugging Face</a>
+      </div>
+    </div>
+  </footer>
+  <div class="applybar">
+    <span>Cresta · AI Deployment Manager</span>
+    <a class="btn" href="https://job-boards.greenhouse.io/cresta/jobs/5078921008" target="_blank" rel="noopener">Greenhouse</a>
+  </div>
+  <script>
+    document.getElementById("copy").addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      try {
+        await navigator.clipboard.writeText(document.getElementById("letter-body").innerText);
+        btn.textContent = "Copied";
+        setTimeout(() => { btn.textContent = "Copy text"; }, 1600);
+      } catch (err) { btn.textContent = "Select and copy"; }
+    });
+  </script>
+</body>
+</html>

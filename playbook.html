@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeremy Panasuk · Deployment Playbook · Cresta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;600&family=Syne:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#070b16; --ink:#eef3ff; --accent:#5ee1ff; --gold:#3d7cff; --muted:#8b96b0; --paper:#0e1528; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); font-family: "Manrope", sans-serif; }
+    a { color: var(--accent); }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header.nav { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid rgba(94,225,255,0.2); padding: 14px 0; }
+    header.nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .brand { color: var(--ink); text-decoration: none; font-family: "Syne", sans-serif; font-weight: 700; }
+    nav a { margin-left: 16px; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; text-decoration: none; color: var(--muted); font-family: "IBM Plex Mono", monospace; }
+    .kicker { letter-spacing: 0.22em; text-transform: uppercase; font-size: 12px; color: var(--accent); margin-bottom: 10px; font-family: "IBM Plex Mono", monospace; }
+    h1 { font-family: "Syne", sans-serif; font-size: clamp(40px, 7vw, 78px); line-height: 0.9; margin: 8px 0 16px; }
+    h2 { font-family: "Syne", sans-serif; font-size: clamp(26px, 4vw, 40px); margin: 0 0 12px; }
+    .tag { font-style: italic; font-size: clamp(18px, 2.2vw, 26px); line-height: 1.3; max-width: 38ch; }
+    section { padding: 56px 0; }
+    .lead { max-width: 68ch; line-height: 1.55; color: var(--muted); }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+    .pillar, .ticket { background: var(--paper); border: 1px solid rgba(94,225,255,0.2); padding: 22px; }
+    .tickets { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 22px; }
+    .ticket b { display: block; font-size: 28px; color: var(--accent); margin-bottom: 6px; font-family: "Syne", sans-serif; }
+    .cta { text-align: center; padding: 48px 0 72px; }
+    .btn { display: inline-block; background: linear-gradient(90deg,#3d7cff,#5ee1ff); color: #070b16; text-decoration: none; padding: 12px 18px; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; margin: 6px; font-family: "IBM Plex Mono", monospace; }
+    footer { border-top: 1px solid rgba(94,225,255,0.2); padding: 20px 0 40px; color: var(--muted); font-size: 14px; }
+    @media (max-width: 800px) { .pillars, .tickets { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="./">Cresta ADM</a>
+    <nav>
+      <a href="./">Packet</a>
+      <a href="playbook.html">Playbook</a>
+      <a href="loyalty.html">Loyalty</a>
+    </nav>
+  </div></header>
+  <section><div class="wrap">
+    <p class="kicker">AI deployment · written operating path</p>
+    <h1>THE<br>DEPLOY PLAYBOOK</h1>
+    <p class="tag">Cresta stages a launch: transcribe, analyze, assist, automate, UAT, hypercare.<br><em>I already write that path before anyone touches config.</em></p>
+    <p class="lead" style="margin-top:18px">An AI Deployment Manager owns the moment the platform becomes used. The IPS artifacts are that job on paper: what is running, what will hang, how to prove go-live, who on the customer team can run the next wave. Conversation intelligence is a new surface. Adoption is the same problem.</p>
+  </div></section>
+  <section><div class="wrap">
+    <p class="kicker">Three surfaces for this role</p>
+    <h2>What the artifacts mean at Cresta</h2>
+    <div class="pillars">
+      <article class="pillar"><p class="kicker">01</p><h3>Launch so it gets used</h3><p>Environment Summary is the current CX stack — unofficial definitions, workarounds, the night operator. If agents (human or AI) will not run it on Tuesday, it did not launch. Dawn 8h→1h got used. That is why it was featured.</p></article>
+      <article class="pillar"><p class="kicker">02</p><h3>Date and metric</h3><p>Upgrade Roadmap + six-class test. Operability, same-data, security, performance, 3rd-party, HA/DR. PepsiCo v9→v10 zero data loss. Micron zero downtime. Cresta’s “against clearly defined success metrics” is this loop.</p></article>
+      <article class="pillar"><p class="kicker">03</p><h3>Leave them ready to scale</h3><p>Named skill-up. Walked loads. QA twin of production. Hypercare is default. Internal teams get a written path so product, eng, and GTM are not guessing. Playbooks are how 19/20 stays 19/20.</p></article>
+    </div>
+  </div></section>
+  <section><div class="wrap">
+    <p class="kicker">The receipts in the files</p>
+    <h2>Four floors. Same deploy loop.</h2>
+    <div class="tickets">
+      <article class="ticket"><b>P1</b><div>Northwestern Mutual</div><p>QA/prod to best practice. GCS in the room. QA twin of production so the next incident does not take the line down.</p></article>
+      <article class="ticket"><b>20–30%</b><div>Mercedes-Benz Financial</div><p>Cache in RAM. Walked the real loads with the team. Cheat sheet stayed.</p></article>
+      <article class="ticket"><b>v9→v10</b><div>Waddell &amp; Reed</div><p>Measured I/O wait. UNC is not HA. In-place vs parallel vs clone plus testing taxonomy.</p></article>
+      <article class="ticket"><b>Phase 2</b><div>Farmers Insurance</div><p>Guidewire XML. 30+ repos as domain risk. Skill-up named. Team praised in the write-up.</p></article>
+    </div>
+    <p class="lead" style="margin-top:22px">Full methodology — bottleneck isolation, dos/don’ts, DVO — on the operator campaign: <a href="https://jpanasuk-netizen.github.io/the-closer/playbook.html">the-closer/playbook</a>. Hostnames stay off the public copy.</p>
+  </div></section>
+  <section class="cta"><div class="wrap">
+    <h2>If you want the person who owns the deploy — this is the operating path.</h2>
+    <a class="btn" href="loyalty.html">Read the loyalty talk</a>
+    <a class="btn" href="./">Back to the packet</a>
+  </div></section>
+  <footer><div class="wrap">Jeremy Panasuk · AI Deployment Manager · Cresta · jpanasuk-netizen.github.io/for-cresta</div></footer>
+</body>
+</html>
