@@ -10,6 +10,11 @@
     @page { size: letter; margin: 0; }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     html, body { background: #fff; }
+    @media screen {
+      html, body { background: #05070e; }
+      body { padding: 28px 16px 64px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+      .sheet { flex-shrink: 0; box-shadow: 0 20px 60px rgba(0,0,0,0.55); }
+    }
     .sheet { width: 8.5in; height: 11in; overflow: hidden; page-break-after: always; position: relative; background: #070b16; color: #eef3ff; font-family: "Manrope", Arial, sans-serif; }
     .pad { padding: 0.20in 0.34in 0.28in; }
     .kicker { font-family: "IBM Plex Mono", monospace; font-size: 6.8pt; letter-spacing: 0.18em; text-transform: uppercase; color: #5ee1ff; font-weight: 500; }
