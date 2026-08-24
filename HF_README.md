@@ -2,7 +2,7 @@
 title: for Cresta
 emoji: 🌊
 colorFrom: blue
-colorTo: cyan
+colorTo: green
 sdk: static
 pinned: false
 short_description: Jeremy Panasuk packet for Cresta AI Deployment Manager.
