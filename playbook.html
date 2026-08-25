@@ -195,7 +195,7 @@
     <article class="iso">
       <h3>How coaching showed up in the Drive files</h3>
       <ul>
-        <li><strong>Named skill-up.</strong> Farmers: Developer tool and Advanced XML for Guidewire. Navy Federal: install, services, naming standards, go-live tests.</li>
+        <li><strong>Named skill-up.</strong> Farmers: Developer tool and Advanced XML for Guidewire. Navy Federal: install, services, naming standards, go-live tests, plus TDM reusable POL_PHI rules so the next developer does not invent a masking name per application.</li>
         <li><strong>Walked loads.</strong> MBFS knowledge transfer on ALFA→ODS, ODS→flat file, ODS→warehouse — not a PDF dump after the fact.</li>
         <li><strong>One room.</strong> When production would not dispatch, the recommendation was the entire technology stack plus Informatica GCS in the same room.</li>
         <li><strong>Praise in the deliverable.</strong> Farmers: the team was knowledgeable, open, and could explain why the current architecture existed. That sentence is coaching.</li>
@@ -213,9 +213,10 @@
       <article class="ticket"><b>20–30%</b><div>Mercedes-Benz Financial · Jun 2017</div><p>ALFA→ODS at 100% CPU. Cache RAM raised so large transformations stop spilling to disk — 20–30% runtime drop. PWX CDC POC vs bulk load. Performance cheat sheet and load walkthroughs left with the team.</p></article>
       <article class="ticket"><b>v9→v10</b><div>Waddell &amp; Reed · Jun 2017</div><p>2-node 9.1.0 grid measured for a month: 80–90% CPU, RAM under-used, disk wait 30–90 ms, SQL wait past 200 ms. UNC is not an HA filesystem. Upgrade types + six-class test plan. Adaptive dispatch, homogeneous nodes, Linux CFS.</p></article>
       <article class="ticket"><b>Phase 2</b><div>Farmers Insurance · Oct 2017</div><p>Guidewire advanced XML and real-time consumers. 30+ repos / integration services as domain risk. NFS vs Veritas/GPFS. Skill-up named. Outstanding demos: Operational Insight and Advanced XML on their schema. Team praised in the write-up.</p></article>
+      <article class="ticket"><b>PHI</b><div>Navy Federal · TDM 9.5.2 baseline</div><p>Informatica TDM 9.5.2 HF1 in Shared Analytics on AIX: PHI masking and subset so non-production is not production. Reusable generic rules (type + technique), POL_PHI / POL_PII wrappers, one table per assigning plan so PowerCenter masking workflows can run concurrently. LDAP groups for authorization. Discovery profiles before anyone guesses which columns are sensitive. Cover: IPS TDM Expert Aditya Mohanty. Platform: Jeremy’s 3,000-hour V1 — install, services, naming standards, go-live tests. Hostnames and production inventory stay off this copy.</p></article>
     </div>
 
-    <p class="note"><b>Source artifacts (author: Jeremy Panasuk, Informatica Professional Services)</b> from Google Drive / Informatica: Northwestern Mutual PowerCenter Environment Summary (Apr 2017); Mercedes-Benz Financial PowerCenter Environment Summary with performance cheat sheet (Jun 2017); Waddell &amp; Reed Informatica Upgrade Roadmap v3 (Jun 2017); Farmers Insurance Phase 2 Architecture Review (Oct 2017); PowerCenter 10.0.0 Upgrade Overview (28 slides). Anonymized “xyz” copies were the teaching templates. Internal hostnames, credentials, and raw capacity tables are not published.</p>
+    <p class="note"><b>Source artifacts</b> from Google Drive: Northwestern Mutual Environment Summary (Apr 2017, Jeremy Panasuk, IPS); Mercedes-Benz Financial Environment Summary + cheat sheet (Jun 2017, Jeremy Panasuk, IPS); Waddell &amp; Reed Upgrade Roadmap v3 (Jun 2017, Jeremy Panasuk, IPS); Farmers Phase 2 Architecture Review (Oct 2017, Jeremy Panasuk, IPS); PowerCenter 10.0.0 Upgrade Overview (Jeremy Panasuk, IPS); Navy Federal TDM-PHI masking Development Guide, TDM 9.5.2 HF1 (cover: Aditya Mohanty, IPS TDM Expert). Anonymized “xyz” copies were teaching templates. Internal hostnames, credentials, and production table inventory are not published.</p>
 
   </div></section>
   <section class="cta"><div class="wrap">
