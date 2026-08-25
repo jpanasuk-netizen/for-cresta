@@ -124,6 +124,70 @@
     </div>
     <p class="lead" style="margin-top:18px"><b>Cresta translation.</b> Environment Summary = the current CX stack — unofficial definitions, workarounds, the night operator. Upgrade Roadmap + six-class test = launch so it hits the date and the metric. Phase review = the next site is cheaper because skill-up is named. The v10 deck is UAT and hypercare: operability, same-data, security, performance, 3rd-party, HA/DR. If the agent (human or AI) will not run it on Tuesday, it did not launch.</p>
   </div></section>
+  <section id="xyz"><div class="wrap">
+    <p class="kicker">Sample Documentation · xyz teaching templates</p>
+    <h2>Five files IPS used to teach the next consultant</h2>
+    <p class="lead">Google Drive folder <b>Informatica / Sample Documentation</b>. Same author as the named floors. Cover says xyz. The operating path is identical. Public copy still does not publish hostnames, UNC aliases, or raw capacity tables.</p>
+    <div class="artifacts">
+      <article class="artifact">
+        <div class="meta">xyz- PowerCenter Environment Summary.doc · Jun 16, 2017</div>
+        <h3>Teaching copy of the MBFS Environment Summary</h3>
+        <p>Author and owner: Jeremy Panasuk. Company on the named original: Mercedes-Benz Financial. This is the file with the performance cheat sheet inside.</p>
+        <ul>
+          <li>ALFA→ODS at 100% CPU. Cache RAM raised so large transformations stop spilling — 20–30% off job runtime.</li>
+          <li>PWX CDC / batch POC vs the bundled bulk loader. GFS2 has no flock — keep-persistence-in-DB is on, and it costs performance.</li>
+          <li>Custom Integration Service property so RHEL reports free memory correctly. Model Office + production domains to best practice.</li>
+          <li>When dispatch will not start: entire technology stack plus Informatica GCS in the same room. Not a ticket queue.</li>
+        </ul>
+      </article>
+      <article class="artifact">
+        <div class="meta">xyz- PowerCenter Environment Summary (2).doc · Apr 14, 2017</div>
+        <h3>Teaching copy of the Northwestern Mutual Environment Summary</h3>
+        <p>Author and owner: Jeremy Panasuk. Low utilization is a finding. Config that was actually applied is listed by number.</p>
+        <ul>
+          <li>ulimit 64k, DB2 repo settings, concurrent jobs 500, heap, stale NFS session logs cleaned so I/O stops lagging.</li>
+          <li>P1 start-delay: GCS escalation. DB2 semaphore on the Informatica client. Resolved.</li>
+          <li>Gold / Platinum parent GRID: dedicated nodes for the high SLA, then spill to shared nodes. LOB-split Integration and Repository services with a backup RS on another node.</li>
+          <li>QA domain identical to production so the next incident does not take prod down. Tidal for schedule. Proactive Monitoring reviewed. 4- or 6-core VMs to right-size TCO.</li>
+        </ul>
+      </article>
+      <article class="artifact">
+        <div class="meta">xyz_Informatica_Upgrade_Roadmap_v3.doc · Jun 27–30, 2017</div>
+        <h3>Teaching copy of the Waddell &amp; Reed Upgrade Roadmap</h3>
+        <p>Author: Jeremy Panasuk. Two-node Windows 2008 VMs, 4 cores / 16 GB each. PowerCenter 9.1.0 plus Data Quality 9.6.1. A month of graphs, not a hallway anecdote.</p>
+        <ul>
+          <li>Round-robin dispatch made the two nodes uneven. 80–90% CPU at peak. RAM only half used — cache still spilling to disk.</li>
+          <li>Disk wait 30–90 ms (Microsoft’s published max is 10–12). SQL wait past 200 ms with RAM sitting idle. UNC as the file share is not HA.</li>
+          <li>HA is resilience, failover, and recovery. Internal domain/gateway/nodes vs external clustering and the shared filesystem.</li>
+          <li>Filesystem matrix: UNC, DFS, CIFS/NAS, NFS v3, Veritas CFS, GFS2, GPFS. Session on Grid vs Workflow on Grid. Adaptive dispatch. Admin of the grid: logging, restart, install.</li>
+        </ul>
+      </article>
+      <article class="artifact">
+        <div class="meta">Informatica_xyz_2_Summary - Copy.doc · Oct 24–30, 2017</div>
+        <h3>Teaching copy of the Farmers Phase 2 Architecture Review</h3>
+        <p>Author: Jeremy Panasuk. Phase 2 is not more of Phase 1. Guidewire Advanced XML and real-time web-service consumers.</p>
+        <ul>
+          <li>Model Repository + Data Integration Service, extra cores, Developer-tool skill-up named in the write-up.</li>
+          <li>30+ repositories and 30+ integration services is TCP/IP overhead. Domains hang. Upgrades become a migration factory.</li>
+          <li>NFS on NAS is Informatica’s least recommended HA filesystem: extra hops, weak cache coherency, lock-manager bounce when a host dies. Partitioning plateaus at one inode per logical node. Expect 35–100% slower than a proper CFS with host-side striping. Supported NAS: NetApp WAFL or EMC — not a RAID export called a share.</li>
+          <li>Veritas CFS or GPFS: I/O fencing, concurrent reads/writes, no keep-persistence-in-DB flag (that flag can cost ~20%). Outstanding demos: Proactive Monitoring / Operational Insight, Advanced XML on their Guidewire schema. Team praised for openness.</li>
+        </ul>
+      </article>
+      <article class="artifact">
+        <div class="meta">PC_V10_Upgrade_Overview.pptx · 28 slides · Jeremy Panasuk, IPS</div>
+        <h3>The coaching deck that stops “just run the installer”</h3>
+        <p>Why v10, PAM first, three upgrade types, six classes of test, Data Validation Option so same-data is honest.</p>
+        <ul>
+          <li>Editions: Standard (batch ETL, partitioning), Advanced (Metadata Manager / Business Glossary, real-time engine), Premium (DVO, Proactive Monitoring, advanced transformation).</li>
+          <li>In-place: short cycle, no extra schemas, users/groups stay, outage for restore, cannot rename domain or nodes.</li>
+          <li>Parallel: snapshot the repo, install fresh, can rename, no domain-install outage, migrate users/groups, small settings-drift risk.</li>
+          <li>Clone: snapshot the domain, fastest like-for-like, still an outage, extra HTTPS caveats. Six-class test: operability (smoke), same-data, security, performance, 3rd-party (schedulers, SVN, encrypt, file transfer, customer monitors), HA vs DR. DVO: 50% source-to-target, 80% regression, 90% upgrade testing.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note">These five files are the kit. Named copies (MBFS, Northwestern Mutual, Waddell &amp; Reed, Farmers) are the work. xyz copies are how the next IPS consultant was taught to write the same document. Hostnames, UNC aliases, and capacity tables stay off this site.</p>
+  </div></section>
+
   <section><div class="wrap">
     <p class="kicker">Performance methodology · MBFS cheat sheet</p>
     <h2>The cheat sheet that stayed with the team</h2>
